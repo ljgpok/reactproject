@@ -14,17 +14,19 @@ class Feature extends Component {
       return (            
         <div>
           <p>{eventData.sensorBlueToothID}</p>
-          <table>
-          {
-            eventData.sensorEventLogs.map((v,i)=>{
-              return(
-                <tr>
-                  <td>{v.timeStamp}</td>
-                  <td>{v.type}</td>
-                </tr>
-              )
-            })
-          }
+          <table className="table">
+            <tbody>
+            {
+              eventData.sensorEventLogs.map((v,i)=>{
+                return(
+                  <tr key={i}>
+                    <td>{v.timeStamp}</td>
+                    <td>{v.type}</td>
+                  </tr>
+                )
+              })
+            }
+            </tbody>
           </table>
         </div>
       );
