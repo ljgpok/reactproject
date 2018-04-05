@@ -16,20 +16,7 @@ const ROOT_URL = 'https://phnodeapi.herokuapp.com';
 
 export function signinUser({ userID, pinCode }) {
   return function(dispatch) {    
-    let details = {
-      userID: userID,
-      pinCode: pinCode      
-    };
-
-    console.log(userID, pinCode);
-
-    var params = [];
-    for (var property in details) {
-      var encodedKey = encodeURIComponent(property);
-      var encodedValue = encodeURIComponent(details[property]);
-      params.push(encodedKey + "=" + encodedValue);
-    }
-    params = params.join("&");
+    let params = querystring.stringify({userID, pinCode});
     console.log(params);    
     axios.post(`${ROOT_URL}/user/login`, params)
       .then(response => {
